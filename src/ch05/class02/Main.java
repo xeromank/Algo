@@ -13,15 +13,30 @@ public class Main {
         char[] arr = str.toCharArray();
 
         for(char c: arr){
-            if('(' == c){
-                s.push(c);
-            }else if(')' == c){
-                s.pop();
+
+            if(')' == c){
+                while(s.pop() != '(');
+//                while(s.peek() != '('){
+//                    s.pop();
+//                }
+//                s.pop();
             }else{
-                if(s.isEmpty()) {
-                    answer += c;
-                }
+                s.push(c);
             }
+
+//            if('(' == c){
+//                s.push(c);
+//            }else if(')' == c){
+//                s.pop();
+//            }else{
+//                if(s.isEmpty()) {
+//                    answer += c;
+//                }
+//            }
+        }
+
+        for(char c:s){
+            answer += c;
         }
 
         return answer;
