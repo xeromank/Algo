@@ -18,13 +18,13 @@ public class Main {
 
         if(n == null)return;
 
-        // 전위
+        // 전위탐색
 //        System.out.print(n.v + " ");
         solution(n.lt);
-        // 중위
+        // 중위탐색
 //        System.out.print(n.v + " ");
         solution(n.rt);
-        // 후위
+        // 후위탐색
 //        System.out.print(n.v + " ");
     }
 
