@@ -18,6 +18,7 @@ class Node {
 public class Main {
 
 
+    // BFS
     public int solution(Node n) {
 
         Queue<Node> q = new LinkedList();
@@ -43,6 +44,15 @@ public class Main {
         return 0;
     }
 
+    // DFS
+    public int solution2(int L, Node n){
+        if(n.lt == null && n.rt == null) {
+            return L;
+        }else{
+            return Math.min(solution2(L+1, n.lt), solution2(L+1, n.rt));
+        }
+    }
+
     public static void main(String[] args) {
         Main T = new Main();
 
@@ -53,6 +63,7 @@ public class Main {
         root.lt.rt = new Node(5);
 
         System.out.println(T.solution(root));
+        System.out.println(T.solution2(0, root));
     }
 
 }
