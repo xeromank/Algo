@@ -3,7 +3,6 @@ package ch07.class08.copy;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Stack;
 
 public class Main {
 
@@ -16,16 +15,20 @@ public class Main {
         q.offer(s);
 
         int cnt = 0;
-        while(!q.isEmpty()){
+        while (!q.isEmpty()) {
 
             int len = q.size();
-            for(int i=0; i<len; i++){
+            for (int i = 0; i < len; i++) {
                 int t = q.poll();
-                if(t == e) return cnt;
+                if (t == e) {
+                    return cnt;
+                }
 
-                for(int r : range){
+                for (int r : range) {
                     int temp = t + r;
-                    if( temp < 1 || temp > 10000 || ch[temp]) continue;
+                    if (temp < 1 || temp > 10000 || ch[temp]) {
+                        continue;
+                    }
 
                     ch[temp] = true;
                     q.offer(temp);
