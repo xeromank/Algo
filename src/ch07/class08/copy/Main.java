@@ -1,41 +1,40 @@
-package ch07.class08;
+package ch07.class08.copy;
 
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-import org.w3c.dom.Node;
+import java.util.Stack;
 
 public class Main {
 
     public int solution(int s, int e) {
 
         boolean[] ch = new boolean[10001];
-        int c = 0;
+        int[] range = {-1, 1, 5};
         Queue<Integer> q = new LinkedList<>();
-//        ch[s] = true;
+        ch[s] = true;
         q.offer(s);
 
+        int cnt = 0;
         while(!q.isEmpty()){
+
             int len = q.size();
-
             for(int i=0; i<len; i++){
-                int v = q.poll();
+                int t = q.poll();
+                if(t == e) return cnt;
 
-                if(ch[v] || v < 1 || v > 10000) continue;
-                ch[v] = true;
-                if(v == e){
-                    return c;
+                for(int r : range){
+                    int temp = t + r;
+                    if( temp < 1 || temp > 10000 || ch[temp]) continue;
+
+                    ch[temp] = true;
+                    q.offer(temp);
                 }
-
-                q.offer(v + 1);
-                q.offer(v - 1);
-                q.offer(v + 5);
             }
-            c++;
+            cnt++;
         }
 
         return 0;
-
     }
 
     public static void main(String[] args) {
@@ -43,11 +42,7 @@ public class Main {
         Scanner keyIn = new Scanner(System.in);
         int s = keyIn.nextInt();
         int e = keyIn.nextInt();
-        long a = System.currentTimeMillis();
         System.out.println(T.solution(s, e));
-        long b = System.currentTimeMillis();
-
-        System.out.println((b-a));
     }
 
 }
