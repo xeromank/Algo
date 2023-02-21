@@ -9,10 +9,10 @@ public class Main {
 
     public int solution(int s, int e) {
 
-        int[] ch = new int[10001];
+        boolean[] ch = new boolean[10001];
         int c = 0;
         Queue<Integer> q = new LinkedList<>();
-        ch[s] = 1;
+//        ch[s] = true;
         q.offer(s);
 
         while(!q.isEmpty()){
@@ -20,7 +20,9 @@ public class Main {
 
             for(int i=0; i<len; i++){
                 int v = q.poll();
-                ch[v] = 1;
+
+                if(ch[v] || v < 1 || v > 10000) continue;
+//                ch[v] = true;
                 if(v == e){
                     return c;
                 }
@@ -41,7 +43,11 @@ public class Main {
         Scanner keyIn = new Scanner(System.in);
         int s = keyIn.nextInt();
         int e = keyIn.nextInt();
+        long a = System.currentTimeMillis();
         System.out.println(T.solution(s, e));
+        long b = System.currentTimeMillis();
+
+        System.out.println((b-a));
     }
 
 }
