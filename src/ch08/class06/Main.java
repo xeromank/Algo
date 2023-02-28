@@ -24,13 +24,17 @@ public class Main {
 
     public void solution(int n, int m, int[] arr) {
         long t1 = System.currentTimeMillis();
-        DFS(arr, m, new ArrayList<>());
+        chkArr = new int[n];
+        DFS1(arr, m, "", 0);
         long t2 = System.currentTimeMillis();
-        BFS(arr, m);
+        DFS2(arr, m, new ArrayList<>());
         long t3 = System.currentTimeMillis();
+        BFS(arr, m);
+        long t4 = System.currentTimeMillis();
 
         System.out.println(t2 - t1);
         System.out.println(t3 - t2);
+        System.out.println(t4 - t3);
     }
 
     private void BFS(int[] arr, int m) {
@@ -67,7 +71,22 @@ public class Main {
 
     }
 
-    private void DFS(int[] arr, int m, List<Integer> chk) {
+    int[] chkArr;
+    private void DFS1(int[] arr, int m, String r, int cnt) {
+        if(m == cnt){
+            System.out.println(r);
+            return;
+        }
+        for (int i=0; i<arr.length; i++) {
+                if(chkArr[i] == 0){
+                    chkArr[i] = 1;
+                    DFS1(arr, m, r + arr[i] + " ", cnt + 1);
+                    chkArr[i] = 0;
+                }
+        }
+    }
+
+    private void DFS2(int[] arr, int m, List<Integer> chk) {
 
         if (chk.size() == m) {
             String r = String.join(" ",
@@ -76,11 +95,13 @@ public class Main {
             return;
         }
 
-        for (int i : arr) {
-            if (!chk.contains(i)) {
-                List<Integer> newChk = new ArrayList<>(chk);
-                newChk.add(i);
-                DFS(arr, m, newChk);
+        for (int i=0; i<arr.length; i++) {
+            if (!chk.contains(arr[i])) {
+                chk.add(arr[i]);
+//                List<Integer> newChk = new ArrayList<>(chk);
+//                newChk.add(arr[i]);
+                DFS2(arr, m, chk);
+                chk.remove(chk.indexOf(arr[i]));
             }
         }
     }
