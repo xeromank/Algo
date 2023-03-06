@@ -1,4 +1,4 @@
-package ch08.class02.copy;
+package ch08.class02.review;
 
 import java.util.LinkedList;
 import java.util.Queue;

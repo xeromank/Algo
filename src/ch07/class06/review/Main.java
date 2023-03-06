@@ -1,4 +1,4 @@
-package ch07.class06.copy;
+package ch07.class06.review;
 
 import java.util.Scanner;
 

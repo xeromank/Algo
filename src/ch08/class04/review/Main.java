@@ -1,4 +1,4 @@
-package ch08.class04.copy;
+package ch08.class04.review;
 
 import java.util.Arrays;
 import java.util.LinkedList;

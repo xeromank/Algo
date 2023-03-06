@@ -1,4 +1,4 @@
-package ch08.class05.copy;
+package ch08.class05.review;
 
 import java.util.Arrays;
 import java.util.Collections;
