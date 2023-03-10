@@ -59,6 +59,8 @@ public class Main {
                 }
             }
             answer++;
+
+            if(c0 == 0) break;
         }
 
         if(c0 > 0){
